@@ -4,7 +4,9 @@
     ViewData["Title"] = "Create";
 }
 
-<form action="Create" method="post" class="flex flex-col items-center justify-center mt-20 space-y-6 w-full text-black">
+<h1 class="text-xl font-semibold mt-10">Create Contact</h1>
+
+<form action="Create" method="post" class="flex flex-col items-center justify-center mt-6 space-y-6 w-full text-black">
 
     <div class="flex flex-col items-center justify-center  w-full space-y-2">
         <input type="text" asp-for="FirstName" placeholder="First Name" class="border-[#666666] border-2 rounded-md px-4 py-2 w-1/4">
@@ -22,27 +24,49 @@
     </div>
 
 
-    <div class="flex flex-col items-center justify-center  w-full space-y-2 hidden">
+    <div id="email" class="flex flex-col items-center justify-center  w-full space-y-2 hidden">
         <input type="email" asp-for="Email" placeholder="Email" class="border-2 border-[#666666] rounded-md px-4 py-2 w-1/4">
         <span asp-validation-for="Email" class="text-red-500"></span>
     </div>
 
-    <div class="flex flex-col items-center justify-center  w-full space-y-2 hidden">
+    <div id="birthDay" class="flex flex-col items-center justify-center  w-full space-y-2 hidden">
         <input type="date" asp-for="BirthDay" placeholder="Enter Your Birthday" class="border-2 border-[#666666] rounded-md px-4 py-2 w-1/4 text-[#9CA3AF]">
         <span asp-validation-for="BirthDay" class="text-red-500"></span>
     </div>
 
-    <div class="flex flex-col items-center justify-center  w-full space-y-2 hidden">
+    <div id="address" class="flex flex-col items-center justify-center  w-full space-y-2 hidden">
         <textarea rows="6" asp-for="Address" placeholder="Enter Your Address" class="border-2 border-[#666666] rounded-md px-4 py-2 w-1/4"></textarea>
         <span asp-validation-for="Address" class="text-red-500"></span>
     </div>
 
-    <div class="flex flex-col items-center justify-center  w-full space-y-2 hidden">
+    <div id="notes" class="flex flex-col items-center justify-center  w-full space-y-2 hidden">
         <textarea rows="4" asp-for="Notes" placeholder="Notes" class="border-2 border-[#666666] rounded-md px-4 py-1 w-1/4"></textarea>
         <span asp-validation-for="Notes" class="text-red-500"></span>
     </div>
 
-    <button type="submit" value="Submit" class="absolute top-10 right-10 btn btn-primary px-10 py-2 text-white text-lg">Save</button>
+    <div id="emailButton" class="text-white flex items-center justify-center space-x-6 text-lg bg-[#325FD7] rounded-xl w-1/4 py-3 cursor-pointer">
+        <img src="./images/email.png" alt="Email" class="w-8 invert grayscale">
+        <span>Add email</span>
+    </div>
+
+    <div id="birthDayButton" class="text-white flex items-center justify-center space-x-6 text-lg bg-[#325FD7] rounded-xl w-1/4 py-3 cursor-pointer">
+        <img src="./images/birthday.png" alt="Email" class="w-8 invert grayscale">
+        <span>Add Birthday</span>
+    </div>
+
+
+    <div id="addressButton" class="text-white flex items-center justify-center space-x-6 text-lg bg-[#325FD7] rounded-xl w-1/4 py-3 cursor-pointer">
+        <img src="./images/address.png" alt="Email" class="w-6 invert grayscale">
+        <span>Add Address</span>
+    </div>
+
+    <div id="notesButton" class="text-white flex items-center justify-center space-x-6 text-lg bg-[#325FD7] rounded-xl w-1/4 py-3 cursor-pointer">
+        <img src="./images/notes.png" alt="Email" class="w-8 invert grayscale">
+        <span>Add Notes</span>
+    </div>
+
+
+    <button type="submit" value="Submit" class="absolute top-4 right-10 btn btn-primary px-10 rounded-xl py-2 text-white text-lg">Save</button>
 
 
 </form>
