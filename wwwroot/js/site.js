@@ -30,7 +30,6 @@ minEmail.addEventListener('click', async () => {
 })
 
 
-
 let birthDayButton = document.querySelector("#birthDayButton");
 let birthDayInput = document.querySelector("#birthDay");
 let minbirthDay = document.querySelector("#minbirthDay");
@@ -91,6 +90,38 @@ minaddress.addEventListener('click', async () => {
         ease: "Power2.in",
     })
 })
+
+
+let nicknameButton = document.querySelector("#nicknameButton");
+let nicknameInput = document.querySelector("#nickname");
+let minnickname = document.querySelector("#minnickname");
+
+
+nicknameButton.addEventListener('click', async function () {
+
+    nicknameButton.classList.toggle("hidden")
+    nicknameInput.classList.toggle("hidden")
+
+    await gsap.from(nicknameInput, {
+        duration: 0.2,
+        y: -10,
+        opacity: 1,
+        ease: "Power2.in",
+    })
+
+})
+
+minnickname.addEventListener('click', async () => {
+    nicknameButton.classList.toggle("hidden")
+    nicknameInput.classList.toggle("hidden")
+
+    await gsap.from(minnickname, {
+        duration: 0.2,
+        y: 10,
+        ease: "Power2.in",
+    })
+})
+
 
 
 

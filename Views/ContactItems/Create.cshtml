@@ -6,6 +6,8 @@
 
 <h1 class="text-xl font-semibold mt-10">Create Contact</h1>
 
+<a id="back" asp-action="Index" class="inline-block absolute left-10 top-4 invert grayscale mt-6 ml-6 w-10"> <img src="~/images/340-removebg-preview.png" alt="Back"></a>
+
 <form action="Create" method="post" class="flex flex-col items-center justify-center mt-6 space-y-6 w-full text-black">
 
     <div class="flex flex-col items-center justify-center  w-full space-y-2 transition-all duration-400 ease-in">
@@ -38,6 +40,17 @@
 
 
 
+    <div id="nickname" class="transition-all duration-400 ease-in flex flex-col items-center justify-center w-full space-y-2 hidden">
+
+        <div class="relative w-1/4">
+            <input type="text" asp-for="Nickname" placeholder="Enter nickname" class="border-2 border-[#666666] rounded-md px-4 py-2 w-full">
+            <img id="minnickname" src="./images/minimize.png" alt="Minimize" class="cursor-pointer w-6 invert grayscale absolute -right-10 top-1/2 transform -translate-y-1/2">
+        </div>
+
+        <span asp-validation-for="Nickname" class="text-red-500"></span>
+    </div>
+
+
     <div id="birthDay" class="transition-all duration-400 ease-in flex flex-col items-center justify-center  w-full space-y-2 hidden">
         <div class="relative w-1/4">
             <input type="date" asp-for="BirthDay" placeholder="Email" class="border-2 border-[#666666] rounded-md px-4 py-2 w-full">
@@ -62,6 +75,8 @@
         <span asp-validation-for="Notes" class="text-red-500"></span>
     </div>
 
+
+
     <div id="emailButton" class="transition-all duration-400 ease-in transition-all duration-400 ease-in text-white flex items-center justify-center space-x-6 text-lg bg-[#325FD7] rounded-xl w-1/4 py-3 cursor-pointer">
         <img src="./images/email.png" alt="Email" class="w-8 invert grayscale">
         <span>Add email</span>
@@ -76,6 +91,11 @@
     <div id="addressButton" class="transition-all duration-400 ease-in text-white flex items-center justify-center space-x-6 text-lg bg-[#325FD7] rounded-xl w-1/4 py-3 cursor-pointer">
         <img src="./images/address.png" alt="Email" class="w-6 invert grayscale">
         <span>Add Address</span>
+    </div>
+
+    <div id="nicknameButton" class="transition-all duration-400 ease-in transition-all duration-400 ease-in text-white flex items-center justify-center space-x-6 text-lg bg-[#325FD7] rounded-xl w-1/4 py-3 cursor-pointer">
+        <img src="./images/nickname.png" alt="Nickname" class="w-8 invert grayscale">
+        <span>Add Nickname</span>
     </div>
 
     <div id="notesButton" class="transition-all duration-400 ease-in text-white flex items-center justify-center space-x-6 text-lg bg-[#325FD7] rounded-xl w-1/4 py-3 cursor-pointer">
