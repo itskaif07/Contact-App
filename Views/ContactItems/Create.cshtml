@@ -8,59 +8,77 @@
 
 <form action="Create" method="post" class="flex flex-col items-center justify-center mt-6 space-y-6 w-full text-black">
 
-    <div class="flex flex-col items-center justify-center  w-full space-y-2">
+    <div class="flex flex-col items-center justify-center  w-full space-y-2 transition-all duration-400 ease-in">
         <input type="text" asp-for="FirstName" placeholder="First Name" class="border-[#666666] border-2 rounded-md px-4 py-2 w-1/4">
         <span asp-validation-for="FirstName" class="text-red-500"></span>
     </div>
 
-    <div class="flex flex-col items-center justify-center  w-full space-y-2">
+    <div class="flex flex-col items-center justify-center  w-full space-y-2 transition-all duration-400 ease-in">
         <input type="text" asp-for="LastName" placeholder="Last Name" class="border-[#666666] border-2 rounded-md px-4 py-2 w-1/4">
         <span asp-validation-for="LastName" class="text-red-500"></span>
     </div>
 
-    <div class="flex flex-col items-center justify-center  w-full space-y-2">
+    <div class="flex flex-col items-center justify-center  w-full space-y-2 transition-all duration-400 ease-in">
         <input type="number" asp-for="PhoneNumber" placeholder="Phone" class="border-2 border-[#666666] rounded-md px-4 py-2 w-1/4">
         <span asp-validation-for="PhoneNumber" class="text-red-500"></span>
     </div>
 
 
-    <div id="email" class="flex flex-col items-center justify-center  w-full space-y-2 hidden">
-        <input type="email" asp-for="Email" placeholder="Email" class="border-2 border-[#666666] rounded-md px-4 py-2 w-1/4">
+
+
+    <div id="email" class="transition-all duration-400 ease-in flex flex-col items-center justify-center w-full space-y-2 hidden">
+
+        <div class="relative w-1/4">
+            <input type="email" asp-for="Email" placeholder="Email" class="border-2 border-[#666666] rounded-md px-4 py-2 w-full">
+            <img id="minEmail" src="./images/minimize.png" alt="Minimize" class="cursor-pointer w-6 invert grayscale absolute -right-10 top-1/2 transform -translate-y-1/2">
+        </div>
+
         <span asp-validation-for="Email" class="text-red-500"></span>
     </div>
 
-    <div id="birthDay" class="flex flex-col items-center justify-center  w-full space-y-2 hidden">
-        <input type="date" asp-for="BirthDay" placeholder="Enter Your Birthday" class="border-2 border-[#666666] rounded-md px-4 py-2 w-1/4 text-[#9CA3AF]">
+
+
+    <div id="birthDay" class="transition-all duration-400 ease-in flex flex-col items-center justify-center  w-full space-y-2 hidden">
+        <div class="relative w-1/4">
+            <input type="date" asp-for="BirthDay" placeholder="Email" class="border-2 border-[#666666] rounded-md px-4 py-2 w-full">
+            <img id="minbirthDay" src="./images/minimize.png" alt="Minimize" class="cursor-pointer w-6 invert grayscale absolute -right-10 top-1/2 transform -translate-y-1/2">
+        </div>
         <span asp-validation-for="BirthDay" class="text-red-500"></span>
     </div>
 
-    <div id="address" class="flex flex-col items-center justify-center  w-full space-y-2 hidden">
-        <textarea rows="6" asp-for="Address" placeholder="Enter Your Address" class="border-2 border-[#666666] rounded-md px-4 py-2 w-1/4"></textarea>
+    <div id="address" class="transition-all duration-400 ease-in flex flex-col items-center justify-center  w-full space-y-2 hidden">
+        <div class="relative w-1/4">
+            <textarea rows="6" asp-for="Address" placeholder="Enter Your Address" class="border-2 border-[#666666] rounded-md px-4 py-2 w-full"></textarea>
+            <img id="minaddress" src="./images/minimize.png" alt="Minimize" class="cursor-pointer w-6 invert grayscale absolute -right-10 top-1/2 transform -translate-y-1/2">
+        </div>
         <span asp-validation-for="Address" class="text-red-500"></span>
     </div>
 
-    <div id="notes" class="flex flex-col items-center justify-center  w-full space-y-2 hidden">
-        <textarea rows="4" asp-for="Notes" placeholder="Notes" class="border-2 border-[#666666] rounded-md px-4 py-1 w-1/4"></textarea>
+    <div id="notes" class="transition-all duration-400 ease-in flex flex-col items-center justify-center  w-full space-y-2 hidden ">
+        <div class="relative w-1/4">
+            <textarea rows="4" asp-for="Notes" placeholder="Notes" class="border-2 border-[#666666] rounded-md px-4 py-2 w-full"></textarea>
+            <img id="minnotes" src="./images/minimize.png" alt="Minimize" class="cursor-pointer w-6 invert grayscale absolute -right-10 top-1/2 transform -translate-y-1/2">
+        </div>
         <span asp-validation-for="Notes" class="text-red-500"></span>
     </div>
 
-    <div id="emailButton" class="text-white flex items-center justify-center space-x-6 text-lg bg-[#325FD7] rounded-xl w-1/4 py-3 cursor-pointer">
+    <div id="emailButton" class="transition-all duration-400 ease-in transition-all duration-400 ease-in text-white flex items-center justify-center space-x-6 text-lg bg-[#325FD7] rounded-xl w-1/4 py-3 cursor-pointer">
         <img src="./images/email.png" alt="Email" class="w-8 invert grayscale">
         <span>Add email</span>
     </div>
 
-    <div id="birthDayButton" class="text-white flex items-center justify-center space-x-6 text-lg bg-[#325FD7] rounded-xl w-1/4 py-3 cursor-pointer">
+    <div id="birthDayButton" class="transition-all duration-400 ease-in text-white flex items-center justify-center space-x-6 text-lg bg-[#325FD7] rounded-xl w-1/4 py-3 cursor-pointer">
         <img src="./images/birthday.png" alt="Email" class="w-8 invert grayscale">
         <span>Add Birthday</span>
     </div>
 
 
-    <div id="addressButton" class="text-white flex items-center justify-center space-x-6 text-lg bg-[#325FD7] rounded-xl w-1/4 py-3 cursor-pointer">
+    <div id="addressButton" class="transition-all duration-400 ease-in text-white flex items-center justify-center space-x-6 text-lg bg-[#325FD7] rounded-xl w-1/4 py-3 cursor-pointer">
         <img src="./images/address.png" alt="Email" class="w-6 invert grayscale">
         <span>Add Address</span>
     </div>
 
-    <div id="notesButton" class="text-white flex items-center justify-center space-x-6 text-lg bg-[#325FD7] rounded-xl w-1/4 py-3 cursor-pointer">
+    <div id="notesButton" class="transition-all duration-400 ease-in text-white flex items-center justify-center space-x-6 text-lg bg-[#325FD7] rounded-xl w-1/4 py-3 cursor-pointer">
         <img src="./images/notes.png" alt="Email" class="w-8 invert grayscale">
         <span>Add Notes</span>
     </div>
