@@ -1,4 +1,5 @@
 ﻿
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace Contact.Models
@@ -9,10 +10,17 @@ namespace Contact.Models
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(100, ErrorMessage = "Your name cannot exceed 100 characters.")]
-        public string ContactName { get; set; }
+        [DisplayName("First Name")]
+        [MaxLength(50, ErrorMessage = "Your name cannot exceed 50 characters.")]
+        public string FirstName { get; set; }
 
         [Required]
+        [DisplayName("Last Name")]
+        [MaxLength(50, ErrorMessage = "Your name cannot exceed 50 characters.")]
+        public string LastName { get; set; }
+
+        [Required]
+        [DisplayName("Phone Number")]
         [RegularExpression(@"^\d{10}$", ErrorMessage = "The phone number must contain exactly 10 digits.")]
         public int PhoneNumber { get; set; }
 

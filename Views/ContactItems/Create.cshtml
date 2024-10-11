@@ -4,65 +4,51 @@
     ViewData["Title"] = "Create";
 }
 
+<form action="Create" method="post" class="flex flex-col items-center justify-center mt-20 space-y-6 w-full text-black">
 
-
-<h4>ContactItem</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="ContactName" class="control-label"></label>
-                <input asp-for="ContactName" class="form-control" />
-                <span asp-validation-for="ContactName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" />
-                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImagePath" class="control-label"></label>
-                <input asp-for="ImagePath" class="form-control" />
-                <span asp-validation-for="ImagePath" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Nickname" class="control-label"></label>
-                <input asp-for="Nickname" class="form-control" />
-                <span asp-validation-for="Nickname" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BirthDay" class="control-label"></label>
-                <input asp-for="BirthDay" class="form-control" />
-                <span asp-validation-for="BirthDay" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
-                <input asp-for="Address" class="form-control" />
-                <span asp-validation-for="Address" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Notes" class="control-label"></label>
-                <input asp-for="Notes" class="form-control" />
-                <span asp-validation-for="Notes" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+    <div class="flex flex-col items-center justify-center  w-full space-y-2">
+        <input type="text" asp-for="FirstName" placeholder="First Name" class="border-[#666666] border-2 rounded-md px-4 py-2 w-1/4">
+        <span asp-validation-for="FirstName" class="text-red-500"></span>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div class="flex flex-col items-center justify-center  w-full space-y-2">
+        <input type="text" asp-for="LastName" placeholder="Last Name" class="border-[#666666] border-2 rounded-md px-4 py-2 w-1/4">
+        <span asp-validation-for="LastName" class="text-red-500"></span>
+    </div>
+
+    <div class="flex flex-col items-center justify-center  w-full space-y-2">
+        <input type="number" asp-for="PhoneNumber" placeholder="Phone" class="border-2 border-[#666666] rounded-md px-4 py-2 w-1/4">
+        <span asp-validation-for="PhoneNumber" class="text-red-500"></span>
+    </div>
+
+
+    <div class="flex flex-col items-center justify-center  w-full space-y-2 hidden">
+        <input type="email" asp-for="Email" placeholder="Email" class="border-2 border-[#666666] rounded-md px-4 py-2 w-1/4">
+        <span asp-validation-for="Email" class="text-red-500"></span>
+    </div>
+
+    <div class="flex flex-col items-center justify-center  w-full space-y-2 hidden">
+        <input type="date" asp-for="BirthDay" placeholder="Enter Your Birthday" class="border-2 border-[#666666] rounded-md px-4 py-2 w-1/4 text-[#9CA3AF]">
+        <span asp-validation-for="BirthDay" class="text-red-500"></span>
+    </div>
+
+    <div class="flex flex-col items-center justify-center  w-full space-y-2 hidden">
+        <textarea rows="6" asp-for="Address" placeholder="Enter Your Address" class="border-2 border-[#666666] rounded-md px-4 py-2 w-1/4"></textarea>
+        <span asp-validation-for="Address" class="text-red-500"></span>
+    </div>
+
+    <div class="flex flex-col items-center justify-center  w-full space-y-2 hidden">
+        <textarea rows="4" asp-for="Notes" placeholder="Notes" class="border-2 border-[#666666] rounded-md px-4 py-1 w-1/4"></textarea>
+        <span asp-validation-for="Notes" class="text-red-500"></span>
+    </div>
+
+    <button type="submit" value="Submit" class="absolute top-10 right-10 btn btn-primary px-10 py-2 text-white text-lg">Save</button>
+
+
+</form>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
