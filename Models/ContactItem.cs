@@ -1,6 +1,7 @@
 ﻿
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Contact.Models
 {
@@ -28,6 +29,9 @@ namespace Contact.Models
         public string? Email { get; set; }
 
         public string? ImagePath { get; set; }
+
+        [NotMapped]
+        public IFormFile ImageFile { get; set; }
 
         public string? Nickname { get; set; }
         public DateTime? BirthDay { get; set; }

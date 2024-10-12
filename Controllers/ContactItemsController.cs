@@ -54,15 +54,32 @@ namespace Contact.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FirstName, LastName, PhoneNumber,Email,ImagePath,Nickname,BirthDay,Address,Notes")] ContactItem contactItem)
+        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,PhoneNumber,Email,ImagePath,Nickname,BirthDay,Address,Notes")] ContactItem contactItem)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(contactItem);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                // Check if an image is uploaded
+                if (contactItem.ImageFile != null && contactItem.ImageFile.Length > 0)
+                {
+                    // Define the path to save the image
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", contactItem.ImageFile.FileName);
+
+                    // Save the image file to the specified path
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await contactItem.ImageFile.CopyToAsync(stream);
+                    }
+
+                    // Save the file path to the database
+                    contactItem.ImagePath = "/images/" + contactItem.ImageFile.FileName;
+                }
+
+                _context.Add(contactItem); // Add contactItem to the context
+                await _context.SaveChangesAsync(); // Save changes to the database
+                return RedirectToAction(nameof(Index)); // Redirect to the Index action
             }
-            return View(contactItem);
+
+            return View(contactItem); // Return the view with the model if validation fails
         }
 
         // GET: ContactItems/Edit/5
