@@ -6,14 +6,18 @@
 
 <a id="back" asp-action="Index" class="inline-block absolute left-10 top-4 invert grayscale mt-6 ml-6 w-10"> <img src="~/images/340-removebg-preview.png" alt="Back"></a>
 
+<a asp-action="Edit" asp-route-id="@Model?.Id" class="inline-block absolute right-20 top-4 mt-6 ml-6 w-10"> <img src="~/images/icons8-edit-50.png" alt="Edit"></a>
 
 <div class="flex flex-col items-center justify-center  w-1/4 ease-in my-6">
+    @if (@Model.ImagePath != null)
+    {   
     <img src="@Model.ImagePath" alt="" class="rounded-full w-44 h-44 object-cover object-center my-6">
+    }
     <h1 class="text-xl font-medium tracking-wide mb-2"> @Model.FirstName @Model.LastName</h1>
     <h5 class="text-lg">@Model.Nickname</h5>
 </div>
 
-<div class="flex items-center justify-between px-10 w-1/2">
+<div class="flex items-center justify-between w-1/2">
 
     <div class="w-14 h-14 rounded-full bg-[#666666] flex items-center justify-center cursor-pointer">
         <img src="~/images/icons8-call-50.png" alt="Call" class="w-8">
@@ -31,9 +35,103 @@
         <img src="~/images/icons8-direction-50.png" alt="Call" class="w-8">
     </div>
 </div>
-  
 
-    
-@* <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-</div> *@
+<h1 class="text-lg font-medium text-left mt-4 w-1/3">Contact info</h1>
+
+
+<div class="w-1/3 my-6 flex flex-col items-start space-y-10">
+
+    @* Phone *@
+
+    <div class="w-full flex items-center justify-between">
+
+        <div class="flex items-center justify-center space-x-6">
+            <img src="~/images/icons8-call-50.png" alt="Call" class="w-8 cursor-pointer">
+            <div>
+                <h1 class="text-xl font-medium">@Model.PhoneNumber</h1>
+                <spam class="text-md">Mobile</spam>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-center space-x-6">
+            <img src="~/images/icons8-video-calling-66.png" alt="Video Call" class="w-8 cursor-pointer">
+            <img src="~/images/icons8-message-50.png" alt="Message" class="w-8 cursor-pointer">
+        </div>
+
+    </div>
+
+    @* Email *@
+
+    @if (Model.Email != null)
+    {
+
+        <div class="flex items-center justify-start space-x-10">
+            <img src="~/images/email.png" alt="Email" class="w-10 cursor-pointer invert grayscale">
+            <div>
+                <h1 class="text-xl font-medium">@Model.Email</h1>
+                <spam class="text-md">Email</spam>
+            </div>
+        </div>
+    }
+
+    @* Address *@
+
+    @if (Model.Email != null)
+    {
+
+        <div class="w-full flex items-center justify-between space-x-10">
+            <div class="flex items-center justify-center space-x-10">
+                <img src="~/images/address.png" alt="Address" class="w-10 cursor-pointer invert grayscale">
+                <div>
+                    <h1 class="text-xl font-medium">@Model.Address</h1>
+                    <spam class="text-md">Address</spam>
+                </div>
+            </div>
+            <img src="~/images/icons8-direction-50.png" alt="Direction" class="w-10 cursor-pointer">
+        </div>
+    }
+
+
+    @if (Model.Email != null)
+    {
+        @*About*@
+
+        <div class="flex items-center justify-start space-x-10">
+            <img src="~/images/uploadImage.png" alt="Nickname" class="w-10 invert grayscale">
+            <div>
+                <h1 class="text-xl font-medium">@Model.Nickname</h1>
+                <spam class="text-md">Nickname</spam>
+            </div>
+        </div>
+    }
+
+
+    @if (Model.Email != null)
+    {
+
+        <div class="flex items-center justify-start space-x-10">
+            <img src="~/images/birthday.png" alt="Birthday" class="w-12 invert grayscale">
+            <div>
+                <h1 class="text-xl font-medium">
+                    @Model.BirthDay?.ToString("dd/MM/yyyy")
+                </h1>
+                <spam class="text-md">Birthday</spam>
+            </div>
+        </div>
+
+    }
+
+    @if (Model.Email != null)
+    {
+
+        <div class="flex items-center justify-start space-x-10">
+            <img src="~/images/notes.png" alt="Notes" class="w-8 invert grayscale">
+            <div>
+                <spam class="text-xl font-medium ">Notes</spam>
+                <h1 class="text-md">@Model.Notes</h1>
+            </div>
+        </div>
+    }
+
+</div>
+

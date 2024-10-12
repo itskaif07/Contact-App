@@ -4,66 +4,101 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1 class="text-2xl font-bold tracking-wide my-6">Edit Contact</h1>
 
-<h4>ContactItem</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="FirstName" class="control-label"></label>
-                <input asp-for="FirstName" class="form-control" />
-                <span asp-validation-for="FirstName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" />
-                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImagePath" class="control-label"></label>
-                <input asp-for="ImagePath" class="form-control" />
-                <span asp-validation-for="ImagePath" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Nickname" class="control-label"></label>
-                <input asp-for="Nickname" class="form-control" />
-                <span asp-validation-for="Nickname" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BirthDay" class="control-label"></label>
-                <input asp-for="BirthDay" class="form-control" />
-                <span asp-validation-for="BirthDay" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
-                <input asp-for="Address" class="form-control" />
-                <span asp-validation-for="Address" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Notes" class="control-label"></label>
-                <input asp-for="Notes" class="form-control" />
-                <span asp-validation-for="Notes" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+<a id="back" asp-action="Index" class="inline-block absolute left-10 top-4 invert grayscale mt-6 ml-6 w-10"> <img src="~/images/340-removebg-preview.png" alt="Back"></a>
+
+<form asp-action="Edit" class="w-1/3 space-y-6">
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Id">
+
+
+    <div class="flex flex-col items-center justify-center space-y-2 transition-all duration-400 ease-in">
+        @if(Model.ImagePath != null)
+        {
+        <img id="uploadImage" src="@Model.ImagePath" alt="Upload Your Image here" asp-for="ImagePath" class="cursor-pointer rounded-full w-44 h-44 object-cover object-center">
+            
+        }
+        else
+        {
+        <img id="uploadImage" src="~/images/uploadImage.png" alt="Upload Your Image here" asp-for="ImagePath" class="cursor-pointer rounded-full w-44 h-44 object-cover object-center">
+        }
+
+        @if (Model.ImagePath != null)
+        {
+            <label for="uploadImageButton" class="px-16 rounded-xl py-2 text-white text-lg btn btn-primary cursor-pointer">Change Image</label>
+        }
+        else
+        {
+            <label for="uploadImageButton" class="px-16 rounded-xl py-2 text-white text-lg btn btn-primary cursor-pointer">Upload Image</label>
+        }
+        <input asp-for="ImageFile" type="file" accept="image/jpeg, image/png, image/jpg" id="uploadImageButton" class="hidden">
+        <span asp-validation-for="ImagePath" class="text-red-500"></span>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div class="form-group space-y-2">
+        <label asp-for="FirstName" class="control-label"></label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group space-y-2">
+        <label asp-for="LastName" class="control-label"></label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+
+
+    <div class="form-group space-y-2">
+        <label asp-for="PhoneNumber" class="control-label"></label>
+        <input asp-for="PhoneNumber" class="form-control" />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+
+
+    <div class="form-group space-y-2">
+        <label asp-for="Email" class="control-label"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+
+    <div class="form-group space-y-2">
+        <label asp-for="Nickname" class="control-label"></label>
+        <input asp-for="Nickname" class="form-control" />
+        <span asp-validation-for="Nickname" class="text-danger"></span>
+    </div>
+
+
+    <div class="form-group space-y-2">
+        <label asp-for="BirthDay" class="control-label"></label>
+        <input asp-for="BirthDay" type="date" class="form-control" />
+        <span asp-validation-for="BirthDay" class="text-danger"></span>
+    </div>
+
+
+    <div id="address" class="form-group space-y-2">
+        <label asp-for="Address" class="control-label"></label>
+        <textarea rows="6" asp-for="Address" placeholder="Enter Your Address" class="border-2 text-black border-[#666666] rounded-md px-4 py-2 w-full"></textarea>
+        <span asp-validation-for="Address" class="text-red-500"></span>
+    </div>
+
+    <div class="form-group space-y-2">
+        <label asp-for="Notes" class="control-label"></label>
+        <input asp-for="Notes" class="form-control" />
+        <span asp-validation-for="Notes" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="absolute top-4 right-10 btn btn-primary px-10 rounded-xl py-2 text-white text-lg">Save</button>
+
+
+</form>
+
+
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

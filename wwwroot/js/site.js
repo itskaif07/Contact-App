@@ -1,4 +1,5 @@
 ﻿
+
 //Upload Image in Create page
 
 let uploadImageButton = document.querySelector("#uploadImageButton");
@@ -173,10 +174,23 @@ minnotes.addEventListener('click', async () => {
     })
 })
 
-
-
 document.getElementById('#createForm').addEventListener('submit', function (event) {
-    event.preventDefault(); 
+    event.preventDefault();
 
-    
+
 });
+
+
+
+// Details page
+
+window.onload = function () {
+    const defaultImage = "https://png.pngtree.com/png-vector/20221125/ourmid/pngtree-no-image-available-icon-flatvector-illustration-pic-design-profile-vector-png-image_40966566.jpg"; // Default image ka path
+
+    document.querySelectorAll('img').forEach(img => {
+        img.onerror = function () {
+            this.onerror = null; // Prevent infinite loop
+            this.src = defaultImage; // Default image set karein
+        };
+    });
+};

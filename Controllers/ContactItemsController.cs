@@ -14,9 +14,13 @@ namespace Contact.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-        public ContactItemsController(ApplicationDbContext context)
+
+        private readonly IWebHostEnvironment _webHostEnvironment;
+
+        public ContactItemsController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         // GET: ContactItems
@@ -139,6 +143,24 @@ namespace Contact.Controllers
                 return NotFound();
             }
 
+            // Check if image file is provided
+            if (contactItem.ImageFile != null)
+            {
+                // Path where image will be stored
+                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images");
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + contactItem.ImageFile.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                // Save the file
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await contactItem.ImageFile.CopyToAsync(fileStream);
+                }
+
+                // Set the image path to save it in database
+                contactItem.ImagePath = "/images/" + uniqueFileName;
+            }
+
             if (ModelState.IsValid)
             {
                 try
@@ -161,6 +183,7 @@ namespace Contact.Controllers
             }
             return View(contactItem);
         }
+
 
         // GET: ContactItems/Delete/5
         public async Task<IActionResult> Delete(int? id)
