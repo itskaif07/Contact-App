@@ -6,14 +6,12 @@
 
 <h1 class="text-2xl font-bold tracking-wide my-6">Contacts</h1>
 
-@foreach(var i in Model)
+@foreach (var i in Model)
 {
-    <div class="border-2 border-white px-4 py-3 w-1/4 rounded-xl flex items-center justify-start space-x-8 my-6 text-xl">
-        <img src="@Url.Content(i.ImagePath)" alt="Profile picture" class="w-8">
-        <h1>@i.FirstName @i.LastName</h1> 
-    </div>
-
-
+    <a asp-action="Details" asp-route-id="@i.Id" class="block border-2 border-white px-4 hover:text-current py-2 w-1/4 rounded-xl flex items-center justify-start space-x-8 my-2 text-xl">
+        <img src="@Url.Content(i.ImagePath)" alt="Profile picture" class="w-12 h-12 rounded-full object-cover object-center">
+        <h1 class="hover:text-yellow-400">@i.FirstName @i.LastName</h1>
+    </a>
 
 }
 
@@ -23,5 +21,5 @@
 
 
 <a asp-controller="ContactItems" asp-action="Create">
-<img src="~/images/icons8-add-50.png" class="fixed bottom-10 right-10 cursor-pointer">
+    <img src="~/images/icons8-add-50.png" class="fixed bottom-10 right-10 cursor-pointer">
 </a>

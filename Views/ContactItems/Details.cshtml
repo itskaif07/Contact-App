@@ -4,63 +4,36 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<a id="back" asp-action="Index" class="inline-block absolute left-10 top-4 invert grayscale mt-6 ml-6 w-10"> <img src="~/images/340-removebg-preview.png" alt="Back"></a>
 
-<div>
-    <h4>ContactItem</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImagePath)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImagePath)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nickname)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nickname)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BirthDay)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BirthDay)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Notes)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Notes)
-        </dd>
-    </dl>
+
+<div class="flex flex-col items-center justify-center  w-1/4 ease-in my-6">
+    <img src="@Model.ImagePath" alt="" class="rounded-full w-44 h-44 object-cover object-center my-6">
+    <h1 class="text-xl font-medium tracking-wide mb-2"> @Model.FirstName @Model.LastName</h1>
+    <h5 class="text-lg">@Model.Nickname</h5>
 </div>
-<div>
+
+<div class="flex items-center justify-between px-10 w-1/2">
+
+    <div class="w-14 h-14 rounded-full bg-[#666666] flex items-center justify-center cursor-pointer">
+        <img src="~/images/icons8-call-50.png" alt="Call" class="w-8">
+    </div>
+    <div class="w-14 h-14 rounded-full bg-[#666666] flex items-center justify-center cursor-pointer">
+        <img src="~/images/icons8-message-50.png" alt="Call" class="w-8">
+    </div>
+    <div class="w-14 h-14 rounded-full bg-[#666666] flex items-center justify-center cursor-pointer">
+        <img src="~/images/icons8-video-calling-66.png" alt="Call" class="w-8">
+    </div>
+    <div class="w-14 h-14 rounded-full bg-[#666666] flex items-center justify-center cursor-pointer">
+        <img src="~/images/email.png" alt="Call" class="w-8 invert grayscale">
+    </div>
+    <div class="w-14 h-14 rounded-full bg-[#666666] flex items-center justify-center cursor-pointer">
+        <img src="~/images/icons8-direction-50.png" alt="Call" class="w-8">
+    </div>
+</div>
+  
+
+    
+@* <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+</div> *@
