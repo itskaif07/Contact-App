@@ -8,12 +8,14 @@
 
 <a id="back" asp-action="Index" class="inline-block absolute left-10 top-4 invert grayscale mt-6 ml-6 w-10"> <img src="~/images/340-removebg-preview.png" alt="Back"></a>
 
-<form action="Create" method="post" class="flex flex-col items-center justify-center mt-6 space-y-6 w-full text-black">
+<form id="createForm" action="Create" enctype="multipart/form-data" method="post" class="flex flex-col items-center justify-center mt-6 space-y-6 w-full text-black">
+     <input type="hidden" asp-for="Id">
+      @Html.AntiForgeryToken()
 
     <div class="flex flex-col items-center justify-center  w-1/4 space-y-2 transition-all duration-400 ease-in" enctype="multipart/form-data">
-        <img id="uploadImage" src="./images/uploadImage.png" alt="Upload Your Image here" asp-for="ImagePath" class="cursor-pointer rounded-full w-44 h-44 object-cover object-center">
+        <img id="uploadImage" src="~/images/uploadImage.png" alt="Upload Your Image here" asp-for="ImagePath" class="cursor-pointer rounded-full w-44 h-44 object-cover object-center">
         <label for="uploadImageButton" class="px-16 rounded-xl py-2 text-white text-lg btn btn-primary cursor-pointer">Upload Image</label>
-        <input type="file" accept="image/jpeg, image/png, image/jpg" id="uploadImageButton" class="hidden">
+        <input asp-for="ImageFile" type="file" accept="image/jpeg, image/png, image/jpg" id="uploadImageButton" class="hidden">
         <span asp-validation-for="ImagePath" class="text-red-500"></span>
     </div>
 
@@ -28,7 +30,7 @@
     </div>
 
     <div class="flex flex-col items-center justify-center  w-full space-y-2 transition-all duration-400 ease-in">
-        <input type="number" asp-for="PhoneNumber" placeholder="Phone" class="border-2 border-[#666666] rounded-md px-4 py-2 w-1/4">
+        <input type="text" asp-for="PhoneNumber" placeholder="Phone" class="border-2 border-[#666666] rounded-md px-4 py-2 w-1/4">
         <span asp-validation-for="PhoneNumber" class="text-red-500"></span>
     </div>
 
@@ -39,7 +41,7 @@
 
         <div class="relative w-1/4">
             <input type="email" asp-for="Email" placeholder="Email" class="border-2 border-[#666666] rounded-md px-4 py-2 w-full">
-            <img id="minEmail" src="./images/minimize.png" alt="Minimize" class="cursor-pointer w-6 invert grayscale absolute -right-10 top-1/2 transform -translate-y-1/2">
+            <img id="minEmail" src="~/images/minimize.png" alt="Minimize" class="cursor-pointer w-6 invert grayscale absolute -right-10 top-1/2 transform -translate-y-1/2">
         </div>
 
         <span asp-validation-for="Email" class="text-red-500"></span>
@@ -51,7 +53,7 @@
 
         <div class="relative w-1/4">
             <input type="text" asp-for="Nickname" placeholder="Enter nickname" class="border-2 border-[#666666] rounded-md px-4 py-2 w-full">
-            <img id="minnickname" src="./images/minimize.png" alt="Minimize" class="cursor-pointer w-6 invert grayscale absolute -right-10 top-1/2 transform -translate-y-1/2">
+            <img id="minnickname" src="~/images/minimize.png" alt="Minimize" class="cursor-pointer w-6 invert grayscale absolute -right-10 top-1/2 transform -translate-y-1/2">
         </div>
 
         <span asp-validation-for="Nickname" class="text-red-500"></span>
@@ -61,7 +63,7 @@
     <div id="birthDay" class="transition-all duration-400 ease-in flex flex-col items-center justify-center  w-full space-y-2 hidden">
         <div class="relative w-1/4">
             <input type="date" asp-for="BirthDay" placeholder="Email" class="border-2 border-[#666666] rounded-md px-4 py-2 w-full">
-            <img id="minbirthDay" src="./images/minimize.png" alt="Minimize" class="cursor-pointer w-6 invert grayscale absolute -right-10 top-1/2 transform -translate-y-1/2">
+            <img id="minbirthDay" src="~/images/minimize.png" alt="Minimize" class="cursor-pointer w-6 invert grayscale absolute -right-10 top-1/2 transform -translate-y-1/2">
         </div>
         <span asp-validation-for="BirthDay" class="text-red-500"></span>
     </div>
@@ -69,7 +71,7 @@
     <div id="address" class="transition-all duration-400 ease-in flex flex-col items-center justify-center  w-full space-y-2 hidden">
         <div class="relative w-1/4">
             <textarea rows="6" asp-for="Address" placeholder="Enter Your Address" class="border-2 border-[#666666] rounded-md px-4 py-2 w-full"></textarea>
-            <img id="minaddress" src="./images/minimize.png" alt="Minimize" class="cursor-pointer w-6 invert grayscale absolute -right-10 top-1/2 transform -translate-y-1/2">
+            <img id="minaddress" src="~/images/minimize.png" alt="Minimize" class="cursor-pointer w-6 invert grayscale absolute -right-10 top-1/2 transform -translate-y-1/2">
         </div>
         <span asp-validation-for="Address" class="text-red-500"></span>
     </div>
@@ -77,7 +79,7 @@
     <div id="notes" class="transition-all duration-400 ease-in flex flex-col items-center justify-center  w-full space-y-2 hidden ">
         <div class="relative w-1/4">
             <textarea rows="4" asp-for="Notes" placeholder="Notes" class="border-2 border-[#666666] rounded-md px-4 py-2 w-full"></textarea>
-            <img id="minnotes" src="./images/minimize.png" alt="Minimize" class="cursor-pointer w-6 invert grayscale absolute -right-10 top-1/2 transform -translate-y-1/2">
+            <img id="minnotes" src="~/images/minimize.png" alt="Minimize" class="cursor-pointer w-6 invert grayscale absolute -right-10 top-1/2 transform -translate-y-1/2">
         </div>
         <span asp-validation-for="Notes" class="text-red-500"></span>
     </div>
@@ -85,33 +87,33 @@
 
 
     <div id="emailButton" class="transition-all duration-400 ease-in transition-all duration-400 ease-in text-white flex items-center justify-center space-x-6 text-lg bg-[#325FD7] rounded-xl w-1/4 py-3 cursor-pointer">
-        <img src="./images/email.png" alt="Email" class="w-8 invert grayscale">
+        <img src="~/images/email.png" alt="Email" class="w-8 invert grayscale">
         <span>Add email</span>
     </div>
 
     <div id="birthDayButton" class="transition-all duration-400 ease-in text-white flex items-center justify-center space-x-6 text-lg bg-[#325FD7] rounded-xl w-1/4 py-3 cursor-pointer">
-        <img src="./images/birthday.png" alt="Email" class="w-8 invert grayscale">
+        <img src="~/images/birthday.png" alt="Email" class="w-8 invert grayscale">
         <span>Add Birthday</span>
     </div>
 
 
     <div id="addressButton" class="transition-all duration-400 ease-in text-white flex items-center justify-center space-x-6 text-lg bg-[#325FD7] rounded-xl w-1/4 py-3 cursor-pointer">
-        <img src="./images/address.png" alt="Email" class="w-6 invert grayscale">
+        <img src="~/images/address.png" alt="Email" class="w-6 invert grayscale">
         <span>Add Address</span>
     </div>
 
     <div id="nicknameButton" class="transition-all duration-400 ease-in transition-all duration-400 ease-in text-white flex items-center justify-center space-x-6 text-lg bg-[#325FD7] rounded-xl w-1/4 py-3 cursor-pointer">
-        <img src="./images/nickname.png" alt="Nickname" class="w-8 invert grayscale">
+        <img src="~/images/nickname.png" alt="Nickname" class="w-8 invert grayscale">
         <span>Add Nickname</span>
     </div>
 
     <div id="notesButton" class="transition-all duration-400 ease-in text-white flex items-center justify-center space-x-6 text-lg bg-[#325FD7] rounded-xl w-1/4 py-3 cursor-pointer">
-        <img src="./images/notes.png" alt="Email" class="w-8 invert grayscale">
+        <img src="~/images/notes.png" alt="Email" class="w-8 invert grayscale">
         <span>Add Notes</span>
     </div>
 
 
-    <button type="submit" value="Submit" class="absolute top-4 right-10 btn btn-primary px-10 rounded-xl py-2 text-white text-lg">Save</button>
+    <button type="submit" class="absolute top-4 right-10 btn btn-primary px-10 rounded-xl py-2 text-white text-lg">Save</button>
 
 
 </form>

@@ -28,6 +28,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=ContactItems}/{action=Create}/{id?}");
+    pattern: "{controller=ContactItems}/{action=Index}/{id?}");
 
 app.Run();

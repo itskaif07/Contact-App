@@ -31,8 +31,7 @@ emailButton.addEventListener('click', async function () {
     await gsap.from(emailInput, {
         duration: 0.2,
         y: -10,
-       opacity: 1,
-       ease: Power2.easeIn(),
+       ease: "Power2.in",
     })
 
 })
@@ -175,3 +174,9 @@ minnotes.addEventListener('click', async () => {
 })
 
 
+
+document.getElementById('#createForm').addEventListener('submit', function (event) {
+    event.preventDefault(); 
+
+    
+});

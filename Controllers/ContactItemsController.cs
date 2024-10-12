@@ -22,7 +22,12 @@ namespace Contact.Controllers
         // GET: ContactItems
         public async Task<IActionResult> Index()
         {
-            return View(await _context.ContactItems.ToListAsync());
+            var contacts = await _context.ContactItems.ToListAsync();
+            var count = await _context.ContactItems.CountAsync();
+
+            ViewBag.ContactCount = count; // Store count in ViewBag
+
+            return View(contacts);
         }
 
         // GET: ContactItems/Details/5
@@ -49,38 +54,62 @@ namespace Contact.Controllers
             return View();
         }
 
-        // POST: ContactItems/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,PhoneNumber,Email,ImagePath,Nickname,BirthDay,Address,Notes")] ContactItem contactItem)
+        public async Task<IActionResult> Create([Bind("PhoneNumber,LastName,FirstName,ImageFile,ImagePath,Email,Nickname,BirthDay,Address,Notes")]
+ ContactItem contactItem)
         {
-            if (ModelState.IsValid)
+
+            if (contactItem.ImageFile != null)
             {
-                // Check if an image is uploaded
-                if (contactItem.ImageFile != null && contactItem.ImageFile.Length > 0)
-                {
-                    // Define the path to save the image
-                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", contactItem.ImageFile.FileName);
-
-                    // Save the image file to the specified path
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        await contactItem.ImageFile.CopyToAsync(stream);
-                    }
-
-                    // Save the file path to the database
-                    contactItem.ImagePath = "/images/" + contactItem.ImageFile.FileName;
-                }
-
-                _context.Add(contactItem); // Add contactItem to the context
-                await _context.SaveChangesAsync(); // Save changes to the database
-                return RedirectToAction(nameof(Index)); // Redirect to the Index action
+                Console.WriteLine($"Received file: {contactItem.ImageFile.FileName}");
+            }
+            else
+            {
+                Console.WriteLine("No file received.");
             }
 
-            return View(contactItem); // Return the view with the model if validation fails
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+                foreach (var error in errors)
+                {
+                    Console.WriteLine(error.ErrorMessage); // Log or show these to the user
+                }
+                return View(contactItem);
+            }
+
+
+            // Check if an image is uploaded
+            if (contactItem.ImageFile != null && contactItem.ImageFile.Length > 0)
+            {
+                // Define the path to save the image
+                var imagesPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
+                if (!Directory.Exists(imagesPath))
+                {
+                    Directory.CreateDirectory(imagesPath); // Ensure directory exists
+                }
+
+                var filePath = Path.Combine(imagesPath, contactItem.ImageFile.FileName);
+
+                // Save the image file to the specified path
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await contactItem.ImageFile.CopyToAsync(stream);
+                }
+
+                // Save the file path to the database
+                contactItem.ImagePath = "/images/" + contactItem.ImageFile.FileName;
+            }
+
+            // Add contactItem to the context and save
+            _context.Add(contactItem);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
         }
+
 
         // GET: ContactItems/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -103,7 +132,7 @@ namespace Contact.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName, LastName, PhoneNumber,Email,ImagePath,Nickname,BirthDay,Address,Notes")] ContactItem contactItem)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName, LastName, PhoneNumber,Email,ImagePath, ImageFile, Nickname,BirthDay,Address,Notes")] ContactItem contactItem)
         {
             if (id != contactItem.Id)
             {

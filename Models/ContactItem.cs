@@ -23,7 +23,7 @@ namespace Contact.Models
         [Required]
         [DisplayName("Phone Number")]
         [RegularExpression(@"^\d{10}$", ErrorMessage = "The phone number must contain exactly 10 digits.")]
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
 
         [EmailAddress(ErrorMessage = "Please enter a valid email address.")]
         public string? Email { get; set; }
@@ -31,7 +31,7 @@ namespace Contact.Models
         public string? ImagePath { get; set; }
 
         [NotMapped]
-        public IFormFile ImageFile { get; set; }
+        public IFormFile? ImageFile { get; set; }
 
         public string? Nickname { get; set; }
         public DateTime? BirthDay { get; set; }
