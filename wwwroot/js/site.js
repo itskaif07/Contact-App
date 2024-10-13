@@ -1,4 +1,9 @@
 ﻿
+//loader
+
+window.addEventListener('load', function () {
+    document.querySelector("#preloader").style.display = "none"
+})
 
 //Upload Image in Create page
 
@@ -6,9 +11,7 @@
 let uploadImageButton = document.querySelector("#uploadImageButton");
 let uploadImage = document.querySelector("#uploadImage");
 
-uploadImage.addEventListener('click', () => {
-    uploadImageButton.click();
-});
+
 
 uploadImageButton.addEventListener('change', function () {
     if (this.files && this.files[0]) {
@@ -175,18 +178,13 @@ minnotes.addEventListener('click', async () => {
     })
 })
 
-document.getElementById('#createForm').addEventListener('submit', function (event) {
-    event.preventDefault();
-
-
-});
 
 
 
 // Details page
 
 window.onload = function () {
-    const defaultImage = "https://png.pngtree.com/png-vector/20221125/ourmid/pngtree-no-image-available-icon-flatvector-illustration-pic-design-profile-vector-png-image_40966566.jpg"; // Default image ka path
+    const defaultImage = "~/images/uploadImage.png"; // Default image ka path
 
     document.querySelectorAll('img').forEach(img => {
         img.onerror = function () {
@@ -196,3 +194,21 @@ window.onload = function () {
     });
 };
 
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    function openGmail(gmail) {
+        window.location.href = `mailto:${gmail}`
+    }
+
+    const emailImage = document.querySelector("#emailImage")
+
+    if (emailImage) {
+
+        emailImage.addEventListener('click', (e) => {
+            e.preventDefault()
+            openGmail('@Model.Email')
+        })
+    }
+
+})

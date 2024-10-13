@@ -11,6 +11,16 @@
 </head>
 
 <body class="w-full bg-[#222222] text-white relative">
+
+
+<div id="preloader" class="fixed inset-0 flex gap-4 items-center justify-center bg-[#222222] z-50 min-h-screen">
+  <div class="w-4 h-4 rounded-full bg-red-500 animate-bounce"></div>
+  <div class="w-4 h-4 rounded-full bg-red-500 animate-bounce [animation-delay:-.3s]"></div>
+  <div class="w-4 h-4 rounded-full bg-red-500 animate-bounce [animation-delay:-.5s]"></div>
+</div>
+
+
+
  
         <main role="main" class="pb-3 flex flex-col items-center justify-center w-full relative">
             @RenderBody()

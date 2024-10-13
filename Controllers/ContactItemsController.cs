@@ -24,7 +24,7 @@ namespace Contact.Controllers
         }
 
         // GET: ContactItems
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
             var contacts = await _context.ContactItems.ToListAsync();
             var count = await _context.ContactItems.CountAsync();

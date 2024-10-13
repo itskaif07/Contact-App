@@ -15,7 +15,7 @@
     <div class="flex flex-col items-center justify-center  w-1/4 space-y-2 transition-all duration-400 ease-in" enctype="multipart/form-data">
         <img id="uploadImage" src="~/images/uploadImage.png" alt="Upload Your Image here" asp-for="ImagePath" class="cursor-pointer rounded-full w-44 h-44 object-cover object-center">
         <label for="uploadImageButton" class="px-16 rounded-xl py-2 text-white text-lg btn btn-primary cursor-pointer">Upload Image</label>
-        <input asp-for="ImageFile" type="file" accept="image/jpeg, image/png, image/jpg" id="uploadImageButton" class="hidden">
+        <input asp-for="ImageFile" type="file" accept="image/jpeg, image/png, image/jpg, image/webp" id="uploadImageButton" class="hidden">
         <span asp-validation-for="ImagePath" class="text-red-500"></span>
     </div>
 

@@ -29,23 +29,28 @@
 
 <div class="flex items-center justify-between w-1/2">
 
-    <div class="w-14 h-14 rounded-full bg-[#666666] flex items-center justify-center cursor-pointer">
+    <div class="w-14 h-14 rounded-full bg-[#555555] hover:bg-[#444444]  flex items-center justify-center cursor-pointer">
         <img src="~/images/icons8-call-50.png" alt="Call" class="w-8">
     </div>
-    <div class="w-14 h-14 rounded-full bg-[#666666] flex items-center justify-center cursor-pointer">
+    <div class="w-14 h-14 rounded-full bg-[#555555] hover:bg-[#444444] flex items-center justify-center cursor-pointer">
         <img src="~/images/icons8-message-50.png" alt="Call" class="w-8">
     </div>
-    <div class="w-14 h-14 rounded-full bg-[#666666] flex items-center justify-center cursor-pointer">
+    <div class="w-14 h-14 rounded-full bg-[#555555] hover:bg-[#444444] flex items-center justify-center cursor-pointer">
         <img src="~/images/icons8-video-calling-66.png" alt="Call" class="w-8">
     </div>
-    <div class="w-14 h-14 rounded-full bg-[#666666] flex items-center justify-center cursor-pointer">
-        <img src="~/images/email.png" alt="Call" class="w-8 invert grayscale">
-    </div>
+
+    @if(Model.Email != null)
+    {
+        <div id="emailImage" class="w-14 h-14 rounded-full bg-[#555555] hover:bg-[#444444] flex items-center justify-center cursor-pointer">
+            <img src="~/images/email.png" alt="Email" class="w-8 invert grayscale">
+        </div>
+    }
+   
 
     @if(@Model.Address != null)
     {
-        <a class="w-14 h-14 rounded-full bg-[#666666] flex items-center justify-center cursor-pointer" href="https://www.google.com/maps/search/?api=1&query=@Model.Address" target="_blank">
-            <img src="~/images/icons8-direction-50.png" alt="Call" class="w-8">
+        <a class="w-14 h-14 rounded-full bg-[#555555] hover:bg-[#444444]  flex items-center justify-center cursor-pointer" href="https://www.google.com/maps/search/?api=1&query=@Model.Address" target="_blank">
+            <img src="~/images/icons8-direction-50.png" alt="Address" class="w-8">
         </a>
     }
 
@@ -81,10 +86,10 @@
     {
 
         <div class="flex items-center justify-start space-x-10">
-            <img src="~/images/email.png" alt="Email" class="w-10 cursor-pointer invert grayscale">
+            <img src="~/images/email.png" alt="Email" class="w-10 invert grayscale">
             <div>
                 <h1 class="text-xl font-medium">@Model.Email</h1>
-                <spam class="text-md">Email</spam>
+                <span class="text-md">Email</span>
             </div>
         </div>
     }
@@ -96,13 +101,15 @@
 
         <div class="w-full flex items-center justify-between space-x-10">
             <div class="flex items-center justify-center space-x-10">
-                <img src="~/images/address.png" alt="Address" class="w-10 cursor-pointer invert grayscale">
+                <img src="~/images/address.png" alt="Address" class="w-10 invert grayscale">
                 <div>
                     <h1 class="text-xl font-medium">@Model.Address</h1>
-                    <spam class="text-md">Address</spam>
+                    <span class="text-md">Address</span>
                 </div>
             </div>
-            <img src="~/images/icons8-direction-50.png" alt="Direction" class="w-10 cursor-pointer">
+            <a href="https://www.google.com/maps/search/?api=1&query=@Model.Address" target="_blank">
+            <img src="~/images/icons8-direction-50.png" alt="Direction" class="w-10">
+            </a>
         </div>
     }
 
@@ -115,7 +122,7 @@
             <img src="~/images/uploadImage.png" alt="Nickname" class="w-10 invert grayscale">
             <div>
                 <h1 class="text-xl font-medium">@Model.Nickname</h1>
-                <spam class="text-md">Nickname</spam>
+                <span class="text-md">Nickname</span>
             </div>
         </div>
     }
@@ -130,7 +137,7 @@
                 <h1 class="text-xl font-medium">
                     @Model.BirthDay?.ToString("dd/MM/yyyy")
                 </h1>
-                <spam class="text-md">Birthday</spam>
+                <span class="text-md">Birthday</span>
             </div>
         </div>
 
@@ -142,7 +149,7 @@
         <div class="flex items-center justify-start space-x-10">
             <img src="~/images/notes.png" alt="Notes" class="w-8 invert grayscale">
             <div>
-                <spam class="text-xl font-medium ">Notes</spam>
+                <span class="text-xl font-medium ">Notes</span>
                 <h1 class="text-md">@Model.Notes</h1>
             </div>
         </div>
