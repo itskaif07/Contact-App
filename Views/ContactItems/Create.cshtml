@@ -25,6 +25,11 @@
     </div>
 
     <div class="flex flex-col items-center justify-center  w-full space-y-2 transition-all duration-400 ease-in">
+        <input type="text" asp-for="MiddleName" placeholder="Middle Name" class="border-[#666666] border-2 rounded-md px-4 py-2 w-1/4">
+        <span asp-validation-for="MiddleName" class="text-red-500"></span>
+    </div>
+
+    <div class="flex flex-col items-center justify-center  w-full space-y-2 transition-all duration-400 ease-in">
         <input type="text" asp-for="LastName" placeholder="Last Name" class="border-[#666666] border-2 rounded-md px-4 py-2 w-1/4">
         <span asp-validation-for="LastName" class="text-red-500"></span>
     </div>

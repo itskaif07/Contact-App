@@ -6,12 +6,22 @@
 
 <a id="back" asp-action="Index" class="inline-block absolute left-10 top-4 invert grayscale mt-6 ml-6 w-10"> <img src="~/images/340-removebg-preview.png" alt="Back"></a>
 
-<a asp-action="Edit" asp-route-id="@Model?.Id" class="inline-block absolute right-20 top-4 mt-6 ml-6 w-10"> <img src="~/images/icons8-edit-50.png" alt="Edit"></a>
+<div class="w-14 h-14 rounded-full bg-blue-500 inline-block absolute right-20 top-4 ml-6 flex items-center justify-center">
+<a asp-action="Edit" asp-route-id="@Model?.Id" class="w-8"> <img src="~/images/icons8-edit-50.png" alt="Edit"></a>
+</div>
 
+<div class="w-14 h-14 rounded-full bg-red-500 inline-block absolute right-44 top-4 ml-6 flex items-center justify-center">
+    <a asp-action="Delete" asp-route-id="@Model?.Id" class="w-8 invert grayscale"> <img src="~/images/delete.png" alt="Delete"></a>
+</div>
 <div class="flex flex-col items-center justify-center  w-1/4 ease-in my-6">
     @if (@Model.ImagePath != null)
     {   
-    <img src="@Model.ImagePath" alt="" class="rounded-full w-44 h-44 object-cover object-center my-6">
+        <img src="@Model.ImagePath" alt="" class="rounded-full w-44 h-44 object-cover object-center my-6">
+    }
+    else
+    {
+        <img id="uploadImage" src="~/images/uploadImage.png" alt="Upload Your Image here" asp-for="ImagePath" class="rounded-full w-44 h-44 object-cover object-center">
+
     }
     <h1 class="text-xl font-medium tracking-wide mb-2"> @Model.FirstName @Model.LastName</h1>
     <h5 class="text-lg">@Model.Nickname</h5>
@@ -76,7 +86,7 @@
 
     @* Address *@
 
-    @if (Model.Email != null)
+    @if (Model.Address != null)
     {
 
         <div class="w-full flex items-center justify-between space-x-10">
@@ -92,7 +102,7 @@
     }
 
 
-    @if (Model.Email != null)
+    @if (Model.Nickname != null)
     {
         @*About*@
 
@@ -106,7 +116,7 @@
     }
 
 
-    @if (Model.Email != null)
+    @if (Model.BirthDay != null)
     {
 
         <div class="flex items-center justify-start space-x-10">
@@ -121,7 +131,7 @@
 
     }
 
-    @if (Model.Email != null)
+    @if (Model.Notes != null)
     {
 
         <div class="flex items-center justify-start space-x-10">

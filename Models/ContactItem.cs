@@ -15,10 +15,13 @@ namespace Contact.Models
         [MaxLength(50, ErrorMessage = "Your name cannot exceed 50 characters.")]
         public string FirstName { get; set; }
 
-        [Required]
+        [DisplayName("Middle Name")]
+        [MaxLength(50, ErrorMessage = "Your name cannot exceed 50 characters.")]
+        public string? MiddleName { get; set; }
+
         [DisplayName("Last Name")]
         [MaxLength(50, ErrorMessage = "Your name cannot exceed 50 characters.")]
-        public string LastName { get; set; }
+        public string? LastName { get; set; }
 
         [Required]
         [DisplayName("Phone Number")]
