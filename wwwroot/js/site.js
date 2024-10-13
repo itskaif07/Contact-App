@@ -2,6 +2,7 @@
 
 //Upload Image in Create page
 
+
 let uploadImageButton = document.querySelector("#uploadImageButton");
 let uploadImage = document.querySelector("#uploadImage");
 
@@ -194,3 +195,4 @@ window.onload = function () {
         };
     });
 };
+
