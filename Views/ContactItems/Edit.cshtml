@@ -12,17 +12,17 @@
 
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <input type="hidden" asp-for="Id">
+    @Html.AntiForgeryToken()
 
-
-    <div class="flex flex-col items-center justify-center space-y-2 transition-all duration-400 ease-in">
-        @if(Model.ImagePath != null)
+    <div class="flex flex-col items-center justify-center space-y-2">
+        @if (Model.ImagePath != null)
         {
-        <img id="uploadImage" src="@Model.ImagePath" alt="Upload Your Image here" asp-for="ImagePath" class="cursor-pointer rounded-full w-44 h-44 object-cover object-center">
-            
+            <img id="uploadImage" src="@Model.ImagePath" alt="Upload Your Image here" class="cursor-pointer rounded-full w-44 h-44 object-cover object-center">
+
         }
         else
         {
-        <img id="uploadImage" src="~/images/uploadImage.png" alt="Upload Your Image here" asp-for="ImagePath" class="cursor-pointer rounded-full w-44 h-44 object-cover object-center">
+            <img id="uploadImage" src="~/images/uploadImage.png" alt="Default Image" class="cursor-pointer rounded-full w-44 h-44 object-cover object-center">
         }
 
         @if (Model.ImagePath != null)

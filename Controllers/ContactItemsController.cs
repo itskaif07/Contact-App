@@ -159,6 +159,7 @@ namespace Contact.Controllers
 
                 // Set the image path to save it in database
                 contactItem.ImagePath = "/images/" + uniqueFileName;
+
             }
 
             if (ModelState.IsValid)
