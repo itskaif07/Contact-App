@@ -4,7 +4,7 @@
     ViewData["Title"] = "Delete";
 }
 
-<a id="back" asp-action="Index" class="inline-block absolute left-4 top-4 invert grayscale w-10"> <img src="~/images/340-removebg-preview.png" alt="Back"></a>
+<a id="back" href="/ContactItems/Details/@Model.Id" class="inline-block absolute left-10 top-6 invert grayscale w-10"> <img src="~/images/340-removebg-preview.png" alt="Back"></a>
 
 
 <div class="flex flex-col items-center justify-center  w-full lg:w-1/4 ease-in my-6">
@@ -113,8 +113,8 @@
     @if (Model.BirthDay != null)
     {
 
-        <div class="flex items-center justify-start space-x-4 lg:space-x-10">
-            <img src="~/images/birthday.png" alt="Birthday" class="w-12 invert grayscale">
+        <div class="flex items-center justify-start space-x-4 lg:space-x-4">
+            <img src="~/images/birthday.png" alt="Birthday" class="w-16 invert grayscale">
             <div>
                 <h1 class="text-xl font-medium">
                     @Model.BirthDay?.ToString("dd/MM/yyyy")
