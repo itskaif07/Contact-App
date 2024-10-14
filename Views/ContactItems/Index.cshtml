@@ -13,7 +13,7 @@
 
 @foreach (var i in Model)
 {
-    <a asp-action="Details" asp-route-id="@i.Id" class="block border-2 border-white px-4 hover:text-current py-2 w-[90%]  sm:w-1/2 lg:w-1/3 rounded-xl flex items-center justify-start space-x-4 md:space-x-8 my-2 sm:text-xl">
+    <a asp-action="Details" asp-route-id="@i.Id" class="block border-2 border-white px-4 hover:text-current py-2 w-[90%]  sm:w-1/2 lg:w-1/3 rounded-xl flex flex-row items-center justify-start space-x-4 md:space-x-8 my-2 sm:text-xl">
         @if(@i.ImagePath != null)
         {
             <img src="@Url.Content(i.ImagePath)" alt="Profile picture" class="w-12 h-12 rounded-full object-cover object-center">
@@ -22,7 +22,7 @@
         {
             <img src="~/images/uploadImage.png" alt="Profile picture" class="w-12 h-12 rounded-full object-cover object-center">
         }
-        <h1 class="hover:text-yellow-400">@i.FirstName @i.MiddleName @i.LastName</h1>
+        <h1 class="hover:text-yellow-400 flex-grow">@i.FirstName @i.MiddleName @i.LastName</h1>
     </a>
 
 }
@@ -35,3 +35,8 @@
 <a id="createButton" asp-controller="ContactItems" asp-action="Create" class="right-4 absolute top-4">
     <img src="~/images/icons8-add-50.png">
 </a>
+
+
+@section scripts{
+    <script src="~/js/index.js"></script>
+}

@@ -7,7 +7,7 @@
 <a id="back" asp-action="Index" class="inline-block absolute left-10 top-4 invert grayscale w-10"> <img src="~/images/340-removebg-preview.png" alt="Back"></a>
 
 <div class=" w-14 h-14 rounded-full bg-blue-500 absolute right-4 lg:right-20 top-4 ml-6 flex items-center justify-center">
-<a asp-action="Edit" asp-route-id="@Model?.Id" class="w-8"> <img src="~/images/icons8-edit-50.png" alt="Edit"></a>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="w-8"> <img src="~/images/icons8-edit-50.png" alt="Edit"></a>
 </div>
 
 <div class="w-14 h-14 rounded-full bg-red-500 absolute right-20 lg:right-36 top-4 ml-6 flex items-center justify-center">
@@ -17,7 +17,7 @@
 
 <div class="flex flex-col items-center justify-center w-full lg:w-1/4 ease-in mt-14 lg:mt-6">
     @if (@Model.ImagePath != null)
-    {   
+    {
         <img src="@Model.ImagePath" alt="" class="rounded-full w-44 h-44 object-cover object-center my-6">
     }
     else
@@ -42,15 +42,15 @@
         <img src="~/images/icons8-video-calling-66.png" alt="Call" class="w-8">
     </div>
 
-    @if(Model.Email != null)
+    @if (Model.Email != null)
     {
-        <div id="emailImage" class="w-14 h-14 rounded-full bg-[#555555] hover:bg-[#444444] flex items-center justify-center cursor-pointer">
+        <div id="emailImage" class="w-14 h-14 rounded-full bg-[#555555] hover:bg-[#444444] flex items-center justify-center cursor-pointer" data-email="@Model.Email">
             <img src="~/images/email.png" alt="Email" class="w-8 invert grayscale">
         </div>
     }
-   
 
-    @if(@Model.Address != null)
+
+    @if (@Model.Address != null)
     {
         <a class="w-14 h-14 rounded-full bg-[#555555] hover:bg-[#444444]  flex items-center justify-center cursor-pointer" href="https://www.google.com/maps/search/?api=1&query=@Model.Address" target="_blank">
             <img src="~/images/icons8-direction-50.png" alt="Address" class="w-8">
@@ -111,7 +111,7 @@
                 </div>
             </div>
             <a href="https://www.google.com/maps/search/?api=1&query=@Model.Address" target="_blank">
-            <img src="~/images/icons8-direction-50.png" alt="Direction" class="w-10">
+                <img src="~/images/icons8-direction-50.png" alt="Direction" class="w-10">
             </a>
         </div>
     }
@@ -159,4 +159,11 @@
     }
 
 </div>
+
+
+
+@section Scripts {
+    <script src="~/js/details.js"></script>
+}
+
 
