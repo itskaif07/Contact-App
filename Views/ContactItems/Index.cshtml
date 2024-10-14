@@ -4,16 +4,16 @@
     ViewData["Title"] = "Index";
 }
 
-<h1 class="text-2xl font-bold tracking-wide my-6">Contacts</h1>
+<h1 class="text-3xl lg:text-2xl font-semibold lg:font-bold flex items-center tracking-wide my-6">Contacts</h1>
 
-<div class="w-fit md:w-1/4 pl-6 pr-2 py-2 bg-[#999999] rounded-3xl my-6 flex items-center justify-between">
-    <input type="search" id="searchInput" placeholder="Search contacts" class="w-full text-lg text-white placeholder:text-gray-500 outline-none bg-[#999999]">
+<div class="w-[90%] sm:w-1/2 lg:w-1/4 pl-6 pr-2 py-2 bg-[#999999] rounded-3xl my-6 flex items-center justify-between">
+    <input type="search" id="searchInput" placeholder="Search contacts" class="w-full lg:text-lg text-white placeholder:text-gray-500 outline-none bg-[#999999]">
 </div>
 
 
 @foreach (var i in Model)
 {
-    <a asp-action="Details" asp-route-id="@i.Id" class="block border-2 border-white px-4 hover:text-current py-2 w-1/3 rounded-xl flex items-center justify-start space-x-8 my-2 text-xl">
+    <a asp-action="Details" asp-route-id="@i.Id" class="block border-2 border-white px-4 hover:text-current py-2 w-[90%]  sm:w-1/2 lg:w-1/3 rounded-xl flex items-center justify-start space-x-4 md:space-x-8 my-2 sm:text-xl">
         @if(@i.ImagePath != null)
         {
             <img src="@Url.Content(i.ImagePath)" alt="Profile picture" class="w-12 h-12 rounded-full object-cover object-center">
@@ -29,9 +29,9 @@
 
 
 
-<h1 class="absolute right-14 top-10"><strong class="font-medium">Total Contacts: </strong>@ViewBag.ContactCount</h1>
+<h1 class="lg:absolute right-14 top-4 mt-4 lg:mt-0"><strong class="font-medium">Total Contacts: </strong>@ViewBag.ContactCount</h1>
 
 
-<a asp-controller="ContactItems" asp-action="Create">
-    <img src="~/images/icons8-add-50.png" class="fixed bottom-10 right-10 cursor-pointer">
+<a id="createButton" asp-controller="ContactItems" asp-action="Create" class="right-4 absolute top-4">
+    <img src="~/images/icons8-add-50.png">
 </a>

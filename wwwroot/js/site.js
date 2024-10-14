@@ -3,7 +3,39 @@
 
 window.addEventListener('load', function () {
     document.querySelector("#preloader").style.display = "none"
+
 })
+
+function updateButtonPosition() {
+    const createButton = document.querySelector("#createButton");
+
+    if (window.innerWidth >= 1024) {
+        createButton.classList.add('fixed', 'bottom-10', 'right-10');
+        createButton.classList.remove('absolute', 'top-4');
+    }
+
+    else if (window.innerWidth >= 300) {
+        createButton.classList.add('absolute', 'top-4', 'right-4');
+        createButton.classList.remove('fixed', 'bottom-10');
+    }
+    else
+    {
+
+        createButton.classList.add('absolute', '-bottom-16',);
+        createButton.classList.remove('top-4', 'fixed', 'right-4');
+    }
+
+}
+
+
+
+
+// Initial setup
+updateButtonPosition();
+
+// Update on resize
+window.addEventListener('resize', updateButtonPosition);
+
 
 //Upload Image in Create page
 
@@ -36,7 +68,7 @@ emailButton.addEventListener('click', async function () {
     await gsap.from(emailInput, {
         duration: 0.2,
         y: -10,
-       ease: "Power2.in",
+        ease: "Power2.in",
     })
 
 })

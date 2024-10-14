@@ -161,6 +161,8 @@ namespace Contact.Controllers
                 contactItem.ImagePath = "/images/" + uniqueFileName;
 
             }
+        
+
 
             if (ModelState.IsValid)
             {

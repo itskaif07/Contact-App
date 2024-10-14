@@ -34,6 +34,7 @@
             <label for="uploadImageButton" class="px-16 rounded-xl py-2 text-white text-lg btn btn-primary cursor-pointer">Upload Image</label>
         }
         <input asp-for="ImageFile" type="file" accept="image/jpeg, image/png, image/jpg, image/webp" id="uploadImageButton" class="hidden">
+        <input type="hidden" asp-for="ImagePath">
         <span asp-validation-for="ImagePath" class="text-red-500"></span>
     </div>
 
@@ -96,7 +97,7 @@
         <span asp-validation-for="Notes" class="text-danger"></span>
     </div>
 
-    <button type="submit" class="absolute top-4 right-10 btn btn-primary px-10 rounded-xl py-2 text-white text-lg">Save</button>
+    <button type="submit" class="lg:absolute top-4 right-10 btn btn-primary px-10 rounded-xl py-2 text-white text-lg">Save</button>
 
 
 </form>
