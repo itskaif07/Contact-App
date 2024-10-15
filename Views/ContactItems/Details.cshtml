@@ -134,8 +134,8 @@
     @if (Model.BirthDay != null)
     {
 
-        <div class="flex items-center justify-start space-x-4">
-            <img src="~/images/birthday.png" alt="Birthday" class="w-16 invert grayscale">
+        <div class="flex items-center justify-start space-x-4 lg:space-x-10">
+            <img src="~/images/birthday.png" alt="Birthday" class="w-10 invert grayscale">
             <div>
                 <h1 class="text-xl font-medium">
                     @Model.BirthDay?.ToString("dd/MM/yyyy")
@@ -149,7 +149,7 @@
     @if (Model.Notes != null)
     {
 
-        <div class="flex items-center justify-start space-x-10">
+        <div class="flex items-center justify-start space-x-4 lg:space-x-10">
             <img src="~/images/notes.png" alt="Notes" class="w-8 invert grayscale">
             <div>
                 <span class="text-xl font-medium ">Notes</span>

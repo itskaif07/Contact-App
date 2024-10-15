@@ -1,4 +1,6 @@
 ﻿
+// Search feature
+
 document.addEventListener('DOMContentLoaded', function () {
 
     document.querySelector("#searchInput").addEventListener("input", (e) => {
@@ -21,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 
-
+//Responsive
 
 
 function updateButtonPosition() {

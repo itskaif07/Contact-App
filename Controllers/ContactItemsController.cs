@@ -26,7 +26,16 @@ namespace Contact.Controllers
         // GET: ContactItems
         public async Task<IActionResult> Index(string searchString)
         {
-            var contacts = await _context.ContactItems.ToListAsync();
+
+            var contacts = await _context.ContactItems.Where(
+                c => string.IsNullOrEmpty(searchString) || (c.FirstName.Contains(searchString))
+                || (c.MiddleName.Contains(searchString))
+                || (c.LastName.Contains(searchString)))
+                 .OrderBy(c => c.FirstName)
+                 .ThenBy(c => c.MiddleName)
+                 .ThenBy(c => c.LastName)
+                 .ToListAsync();
+
             var count = await _context.ContactItems.CountAsync();
 
             ViewBag.ContactCount = count; // Store count in ViewBag
@@ -131,9 +140,6 @@ namespace Contact.Controllers
             return View(contactItem);
         }
 
-        // POST: ContactItems/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName, MiddleName, LastName, PhoneNumber,Email,ImagePath, ImageFile, Nickname,BirthDay,Address,Notes")] ContactItem contactItem)
@@ -161,7 +167,7 @@ namespace Contact.Controllers
                 contactItem.ImagePath = "/images/" + uniqueFileName;
 
             }
-        
+
 
 
             if (ModelState.IsValid)

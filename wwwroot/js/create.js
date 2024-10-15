@@ -1,5 +1,5 @@
 ﻿
-//Upload Image in Create page
+//Upload Image
 
 
 let uploadImageButton = document.querySelector("#uploadImageButton");
@@ -15,7 +15,7 @@ uploadImageButton.addEventListener('change', function () {
 
 
 
-//Input functionalities in Create page
+//Input functionalities
 
 let emailButton = document.querySelector("#emailButton");
 let emailInput = document.querySelector("#email");
@@ -174,15 +174,15 @@ minnotes.addEventListener('click', async () => {
 
 
 
+// default image on error
+
 window.onload = function () {
-    const defaultImage = "~/images/uploadImage.png"; // Default image ka path
+    const defaultImage = "~/images/uploadImage.png";
 
     document.querySelectorAll('img').forEach(img => {
         img.onerror = function () {
-            this.onerror = null; // Prevent infinite loop
-            this.src = defaultImage; // Default image set karein
+            this.onerror = null;
+            this.src = defaultImage;
         };
     });
 };
-
-
