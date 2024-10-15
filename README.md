@@ -5,7 +5,7 @@ Create Contacts: Effortlessly add new contacts by filling out a simple form that
 
 Edit Contacts: Easily modify existing contact details. The intuitive edit interface ensures that users can update any contact information with minimal effort.
 
-Delete Contacts: Remove unwanted contacts swiftly. The app includes a confirmation prompt to prevent accidental deletions.
+Delete Contacts: Remove unwanted contacts swiftly.
 
 Search Functionality: Quickly find contacts using a dynamic search bar that filters results in real-time based on user input, enhancing usability and accessibility.
 
