@@ -24,23 +24,34 @@ namespace Contact.Controllers
         }
 
         // GET: ContactItems
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index(string sortOrder)
         {
+            IQueryable<ContactItem> contacts = _context.ContactItems;
 
-            var contacts = await _context.ContactItems.Where(
-                c => string.IsNullOrEmpty(searchString) || (c.FirstName.Contains(searchString))
-                || (c.MiddleName.Contains(searchString))
-                || (c.LastName.Contains(searchString)))
-                 .OrderBy(c => c.FirstName)
-                 .ThenBy(c => c.MiddleName)
-                 .ThenBy(c => c.LastName)
-                 .ToListAsync();
+            switch (sortOrder)
+            {
+                case "asc":
+                    contacts = contacts.OrderBy(c => c.FirstName).ThenBy(c => c.MiddleName).ThenBy(c => c.LastName);
+                    break;
+                case "desc":
+                    contacts = contacts.OrderByDescending(c => c.FirstName).ThenBy(c => c.MiddleName).ThenBy(c => c.LastName);
+                    break;
+                case "date":
+                    contacts = contacts.OrderBy(c => c.DateAdded);
+                    break;
+                case "date_desc":
+                    contacts = contacts.OrderByDescending(c => c.DateAdded);
+                    break;
+                default:
+                    contacts = contacts.OrderBy(c => c.FirstName).ThenBy(c => c.MiddleName).ThenBy(c => c.LastName);
+                    break;
+            }
 
             var count = await _context.ContactItems.CountAsync();
 
             ViewBag.ContactCount = count; // Store count in ViewBag
 
-            return View(contacts);
+            return View(await contacts.ToListAsync());
         }
 
         // GET: ContactItems/Details/5

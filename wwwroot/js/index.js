@@ -53,3 +53,33 @@ updateButtonPosition();
 window.addEventListener('resize', updateButtonPosition);
 
 
+//context menu
+
+let sort = document.querySelector("#sort");
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    document.addEventListener("contextmenu", (e) => {
+        e.preventDefault();
+
+        sort.style.left = `${e.pageX}px`;
+        sort.style.top = `${e.pageY}px`;
+
+
+        sort.classList.remove("hidden");
+    });
+
+    document.addEventListener("click", (e) => {
+
+        if (!sort.classList.contains('hidden') && e.target !== sort) {
+            sort.classList.add("hidden");
+        }
+    });
+});
+
+
+// sort
+
+function sortContacts(order) {
+    window.location.href = "/ContactItems/Index?sortOrder=" + order;
+}

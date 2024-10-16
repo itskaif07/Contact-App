@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -42,5 +43,12 @@ namespace Contact.Models
         public string? Address { get; set; }
 
         public string? Notes { get; set; }
+
+        public string DateAdded { get; set; }
+
+        public ContactItem()
+        {
+            DateAdded = DateTime.Now.ToString("dd/MM/yyyy");
+        }
     }
 }

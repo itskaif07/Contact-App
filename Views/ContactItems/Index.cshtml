@@ -10,6 +10,14 @@
     <input type="search" id="searchInput" placeholder="Search contacts" class="w-full lg:text-lg text-white placeholder:text-gray-500 outline-none bg-[#999999]">
 </div>
 
+<div id="sort" class="bg-[#f0f0f0] w-32 px-3 space-y-1 py-2 text-black hidden absolute z-100">
+    <h1 class="font-medium">Sort</h1>
+    <h5 onclick="sortContacts('asc')" class="sortOption cursor-pointer hover:text-blue-400">Name (A-Z)</h5>
+    <h5 onclick="sortContacts('desc')" class="sortOption cursor-pointer hover:text-blue-400">Name (Z-A)</h5>
+    <h5 onclick="sortContacts('date')" class="sortOption cursor-pointer hover:text-blue-400">Oldest</h5>
+    <h5 onclick="sortContacts('date_desc')" class="sortOption cursor-pointer hover:text-blue-400">Recent</h5>
+</div>
+
 
 @foreach (var i in Model)
 {
