@@ -9,7 +9,7 @@ Delete Contacts: Remove unwanted contacts swiftly.
 
 Search Functionality: Quickly find contacts using a dynamic search bar that filters results in real-time based on user input, enhancing usability and accessibility.
 
-Sorting Functionality: Organized contacts by name (ascending and descending both), date(oldest and recent) through right click providing flexibility in how information is displayed
+Sorting Functionality: Organized contacts by name (ascending and descending both), date (oldest and recent both) through right click providing flexibility in how information is displayed
 
 Responsive Design: The application is fully responsive, ensuring an optimal viewing experience across various devices, including desktops, tablets, and smartphones.
 
